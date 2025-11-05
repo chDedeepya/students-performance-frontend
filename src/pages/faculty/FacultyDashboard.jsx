@@ -288,28 +288,7 @@ const FacultyDashboard = () => {
         {activeTab === "courses" && (
           <div className="space-y-6">
             {/* Quick Actions */}
-            <SimpleCard>
-              <CardHeader className="pb-2">
-                <CardTitle>Quick Actions</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-3">
-                <Button className="w-full justify-start" variant="outline" onClick={() => navigate('/faculty/create-course')}>
-                  <Plus className="h-4 w-4 mr-2" /> Add Course
-                </Button>
-                <Button className="w-full justify-start" variant="outline" onClick={() => navigate('/faculty/create-assignment')}>
-                  <Plus className="h-4 w-4 mr-2" /> Create New Assignment
-                </Button>
-                <Button className="w-full justify-start" variant="outline" onClick={() => navigate('/faculty/grade-submissions')}>
-                  <FileText className="h-4 w-4 mr-2" /> Grade Submissions
-                </Button>
-                <Button className="w-full justify-start" variant="outline" onClick={() => navigate('/faculty/reports')}>
-                  <BarChart3 className="h-4 w-4 mr-2" /> Generate Report
-                </Button>
-                <Button className="w-full justify-start" variant="outline" onClick={() => navigate('/faculty/schedule-class')}>
-                  <Calendar className="h-4 w-4 mr-2" /> Schedule Class
-                </Button>
-              </CardContent>
-            </SimpleCard>
+            
 
             <SimpleCard>
               <CardHeader className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
@@ -390,29 +369,7 @@ const FacultyDashboard = () => {
         {activeTab === "reports" && (
           <div className="space-y-6">
             {/* Quick Actions */}
-            <SimpleCard>
-              <CardHeader className="pb-2">
-                <CardTitle>Quick Actions</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-3">
-                <Button className="w-full justify-start" variant="outline" onClick={() => navigate('/faculty/create-course')}>
-                  <Plus className="h-4 w-4 mr-2" /> Add Course
-                </Button>
-                <Button className="w-full justify-start" variant="outline" onClick={() => navigate('/faculty/create-assignment')}>
-                  <Plus className="h-4 w-4 mr-2" /> Create New Assignment
-                </Button>
-                <Button className="w-full justify-start" variant="outline" onClick={() => navigate('/faculty/grade-submissions')}>
-                  <FileText className="h-4 w-4 mr-2" /> Grade Submissions
-                </Button>
-                <Button className="w-full justify-start" variant="outline" onClick={() => navigate('/faculty/reports')}>
-                  <BarChart3 className="h-4 w-4 mr-2" /> Generate Report
-                </Button>
-                <Button className="w-full justify-start" variant="outline" onClick={() => navigate('/faculty/schedule-class')}>
-                  <Calendar className="h-4 w-4 mr-2" /> Schedule Class
-                </Button>
-              </CardContent>
-            </SimpleCard>
-
+           
             <SimpleCard>
               <CardHeader>
                 <CardTitle>Reports</CardTitle>

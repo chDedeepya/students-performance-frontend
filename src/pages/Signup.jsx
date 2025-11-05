@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom"; // ✅ Added Link here
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import BackButton from "@/components/ui/back-button";
@@ -64,26 +64,22 @@ const SignUp = () => {
     setErr("");
     setLoading(true);
     try {
-      // Create user with the database
       const userData = {
         name,
         email,
         password: pwd,
-        role: 'student',
+        role: "student",
         level: 1,
         xp: 0,
         streak: 0,
         enrolledCourses: [],
-        lastLogin: new Date().toISOString()
+        lastLogin: new Date().toISOString(),
       };
       const newUser = await dataService.createUser(userData);
 
       if (newUser) {
-        // Store user session (in a real app, use proper session management)
-        localStorage.setItem('currentUser', JSON.stringify(newUser));
+        localStorage.setItem("currentUser", JSON.stringify(newUser));
         console.log("User created:", newUser);
-
-        // Navigate based on selected role
         navigate("/student/dashboard");
       } else {
         setErr("Failed to create account. Please try again.");
@@ -97,7 +93,6 @@ const SignUp = () => {
   };
 
   const onOAuth = (provider) => {
-    // TODO: wire your provider login
     console.log(`OAuth with ${provider}`);
   };
 
@@ -234,7 +229,7 @@ const SignUp = () => {
                 </div>
               </div>
 
-              {/* Terms and Conditions */}
+              {/* Terms */}
               <div className="flex items-start gap-2">
                 <Checkbox checked={agree} onChange={(e) => setAgree(e.target.checked)} />
                 <label className="text-sm text-muted-foreground">
@@ -249,59 +244,41 @@ const SignUp = () => {
                 </label>
               </div>
 
-              {/* Error */}
               {err && (
                 <div className="rounded-md border border-destructive/40 bg-destructive/10 px-3 py-2 text-sm">
                   {err}
                 </div>
               )}
 
-              {/* Submit */}
-              <Button
-                type="submit"
-                disabled={loading}
-                className="w-full rounded-full px-4"
-              >
+              <Button type="submit" disabled={loading} className="w-full rounded-full px-4">
                 {loading ? "Creating account..." : "Create account"}
                 {!loading && <ArrowRight className="h-4 w-4 ml-2" />}
               </Button>
 
-              {/* Divider */}
               <div className="flex items-center gap-3">
                 <div className="h-px flex-1 bg-border" />
                 <span className="text-xs text-muted-foreground">or</span>
                 <div className="h-px flex-1 bg-border" />
               </div>
 
-              {/* OAuth */}
               <div className="grid grid-cols-2 gap-3">
-                <Button
-                  type="button"
-                  variant="outline"
-                  className="w-full"
-                  onClick={() => onOAuth("google")}
-                >
+                <Button type="button" variant="outline" className="w-full" onClick={() => onOAuth("google")}>
                   <Chrome className="h-4 w-4 mr-2" />
                   Google
                 </Button>
-                <Button
-                  type="button"
-                  variant="outline"
-                  className="w-full"
-                  onClick={() => onOAuth("github")}
-                >
+                <Button type="button" variant="outline" className="w-full" onClick={() => onOAuth("github")}>
                   <Github className="h-4 w-4 mr-2" />
                   GitHub
                 </Button>
               </div>
             </form>
 
-            {/* Footer */}
+            {/* ✅ Fixed Footer Link */}
             <p className="mt-6 text-center text-xs text-muted-foreground">
               Already have an account?{" "}
-              <a href="/signin" className="underline underline-offset-2 hover:text-foreground">
+              <Link to="/signin" className="underline underline-offset-2 hover:text-foreground">
                 Sign in
-              </a>
+              </Link>
             </p>
           </CardContent>
         </Card>

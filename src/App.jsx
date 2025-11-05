@@ -25,6 +25,7 @@ import Privacy from "./pages/Privacy";
 import Security from "./pages/Security";
 import Status from "./pages/Status";
 
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -37,6 +38,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
+
           <Route path="/student/dashboard" element={<StudentDashboard />} />
           <Route path="/faculty/dashboard" element={<FacultyDashboard />} />
           <Route path="/faculty/courses" element={<Courses />} />

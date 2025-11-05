@@ -25,6 +25,13 @@ import {
  * Header with translucent glass, sticky, and Sign in / Sign up actions
  */
 function Header() {
+  const handleScroll = (id) => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <header className="sticky top-0 z-50 border-b bg-background/60 backdrop-blur supports-[backdrop-filter]:bg-background/50">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6 md:px-12">
@@ -34,9 +41,24 @@ function Header() {
         </Link>
 
         <nav className="hidden items-center gap-6 text-sm text-muted-foreground md:flex">
-          <a href="#roles" className="transition-colors hover:text-foreground">Roles</a>
-          <a href="#features" className="transition-colors hover:text-foreground">Features</a>
-          <a href="#cta" className="transition-colors hover:text-foreground">Get started</a>
+          <button
+            onClick={() => handleScroll("roles")}
+            className="transition-colors hover:text-foreground"
+          >
+            Roles
+          </button>
+          <button
+            onClick={() => handleScroll("features")}
+            className="transition-colors hover:text-foreground"
+          >
+            Features
+          </button>
+          <button
+            onClick={() => handleScroll("cta")}
+            className="transition-colors hover:text-foreground"
+          >
+            Get started
+          </button>
         </nav>
 
         <div className="flex items-center gap-2">
@@ -300,7 +322,7 @@ const Landing = () => {
             {/* Brand */}
             <div>
               <Link to="/" className="mb-4 inline-flex items-center gap-2 font-extrabold">
-                <GraduationCap className="h-6 w-6" /> SamrtLearn
+                <GraduationCap className="h-6 w-6" /> SmartLearn
               </Link>
               <p className="mt-3 text-sm text-background/80">
                 A modern, AI-powered learning platform for B.Tech students and educators. Gamified, data-driven, and secure.
@@ -340,35 +362,37 @@ const Landing = () => {
                 <li><Link to="/blog" className="hover:underline">Blog</Link></li>
                 <li><Link to="/support" className="hover:underline">Support</Link></li>
                 <li><Link to="/community" className="hover:underline">Community</Link></li>
+                <li><Link to="/terms" className="hover:underline">Terms</Link></li>
+                <li><Link to="/privacy" className="hover:underline">Privacy Policy</Link></li>
+                <li><Link to="/security" className="hover:underline">Security</Link></li>
+                <li><Link to="/status" className="hover:underline">Status</Link></li>
               </ul>
             </div>
 
             {/* Newsletter */}
             <div>
               <h4 className="text-lg font-semibold">Stay in the loop</h4>
-              <p className="mt-3 text-sm text-background/80">Get product updates, new features, and tips—straight to your inbox.</p>
-              <form
-                className="mt-4 flex items-center gap-2"
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  alert("Thanks for subscribing! (wire up your handler)");
-                }}
-              >
-                <Input type="email" required placeholder="you@college.edu" className="bg-background text-foreground" />
-                <Button type="submit" variant="secondary">Subscribe</Button>
+              <p className="mt-3 text-sm text-background/80">
+                Subscribe for updates, insights, and exclusive platform features.
+              </p>
+              <form className="mt-4 flex">
+                <Input
+                  type="email"
+                  placeholder="Your email"
+                  className="rounded-l-full border-none bg-background/10 text-background placeholder:text-background/50 focus-visible:ring-0 focus-visible:ring-offset-0"
+                />
+                <Button
+                  type="submit"
+                  className="rounded-r-full bg-background text-foreground hover:bg-background/90"
+                >
+                  Subscribe
+                </Button>
               </form>
-              <p className="mt-2 text-xs text-background/60">By subscribing, you agree to our <Link to="/privacy" className="underline">Privacy Policy</Link>.</p>
             </div>
           </div>
 
-          <div className="mt-10 border-t border-background/20 pt-6 text-xs text-background/70 md:flex md.items-center md:justify-between">
-            <p>© {new Date().getFullYear()} SmartLearn. All rights reserved.</p>
-            <ul className="mt-4 flex items-center gap-4 md:mt-0">
-              <li><Link to="/terms" className="hover:underline">Terms</Link></li>
-              <li><Link to="/privacy" className="hover:underline">Privacy</Link></li>
-              <li><Link to="/security" className="hover:underline">Security</Link></li>
-              <li><Link to="/status" className="hover:underline">Status</Link></li>
-            </ul>
+          <div className="mt-12 border-t border-background/20 pt-8 text-center text-sm text-background/70">
+            © {new Date().getFullYear()} SmartLearn. All rights reserved.
           </div>
         </div>
       </footer>

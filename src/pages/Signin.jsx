@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom"; // ✅ Added Link
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import BackButton from "@/components/ui/back-button";
@@ -61,18 +61,18 @@ const SignIn = () => {
 
       if (user) {
         // Store user session (in a real app, use proper session management)
-        localStorage.setItem('currentUser', JSON.stringify(user));
+        localStorage.setItem("currentUser", JSON.stringify(user));
         console.log("User authenticated:", user);
 
         // Navigate based on user role
         switch (user.role) {
-          case 'admin':
+          case "admin":
             navigate("/admin/dashboard");
             break;
-          case 'faculty':
+          case "faculty":
             navigate("/faculty/dashboard");
             break;
-          case 'student':
+          case "student":
           default:
             navigate("/student/dashboard");
             break;
@@ -101,7 +101,9 @@ const SignIn = () => {
           <BackButton />
           <div>
             <h1 className="text-2xl md:text-3xl font-extrabold tracking-tight">Sign in</h1>
-            <p className="text-muted-foreground text-sm">Welcome back! Please enter your details.</p>
+            <p className="text-muted-foreground text-sm">
+              Welcome back! Please enter your details.
+            </p>
           </div>
         </div>
 
@@ -166,7 +168,10 @@ const SignIn = () => {
                   <Checkbox checked={remember} onChange={(e) => setRemember(e.target.checked)} />
                   Remember me
                 </label>
-                <a href="/forgot-password" className="text-sm text-muted-foreground hover:text-foreground">
+                <a
+                  href="/forgot-password"
+                  className="text-sm text-muted-foreground hover:text-foreground"
+                >
                   Forgot password?
                 </a>
               </div>
@@ -179,11 +184,7 @@ const SignIn = () => {
               )}
 
               {/* Submit */}
-              <Button
-                type="submit"
-                disabled={loading}
-                className="w-full rounded-full px-4"
-              >
+              <Button type="submit" disabled={loading} className="w-full rounded-full px-4">
                 {loading ? "Signing in..." : "Sign in"}
                 {!loading && <ArrowRight className="h-4 w-4 ml-2" />}
               </Button>
@@ -221,9 +222,9 @@ const SignIn = () => {
             {/* Footer */}
             <p className="mt-6 text-center text-xs text-muted-foreground">
               Don’t have an account?{" "}
-              <a href="/signup" className="underline underline-offset-2 hover:text-foreground">
+              <Link to="/signup" className="underline underline-offset-2 hover:text-foreground">
                 Sign up
-              </a>
+              </Link>
             </p>
           </CardContent>
         </Card>
