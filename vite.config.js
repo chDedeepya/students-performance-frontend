@@ -11,6 +11,14 @@ export default defineConfig({
     },
   },
   build: {
-    outDir: 'docs',
+    outDir: 'dist',
+    chunkSizeWarningLimit: 1000, // Increase chunk size warning limit
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['/node_modules/'],
+        },
+      },
+    },
   },
 });
